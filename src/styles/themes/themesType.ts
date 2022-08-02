@@ -1,0 +1,19 @@
+import {Theme} from '@react-navigation/native';
+
+export type ThemeColorsTypes = {
+  primary: string; //obligatory
+  background: string; //obligatory
+  card: string; //obligatory
+  text: string; //obligatory
+  border: string; //obligatory
+  notification: string; //obligatory
+
+  primaryAlternative?: string;
+  secondary?: string;
+  tertiary?: string;
+  semitransparentBackground?: string;
+};
+
+export type ThemesType = Theme & {
+  colors: ThemeColorsTypes;
+};
