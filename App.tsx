@@ -13,9 +13,7 @@ import {mainTheme} from '~styles';
 function NavigationWithRedux() {
   return (
     <NavigationContainer theme={mainTheme}>
-      <MaterialProvider>
-        <MainNavigator />
-      </MaterialProvider>
+      <MainNavigator />
     </NavigationContainer>
   );
 }
@@ -23,9 +21,11 @@ function NavigationWithRedux() {
 export default function App() {
   return (
     <ReduxProvider store={reducersStore}>
-      <PersistGate persistor={persistor}>
-        <NavigationWithRedux />
-      </PersistGate>
+      <MaterialProvider>
+        <PersistGate persistor={persistor}>
+          <NavigationWithRedux />
+        </PersistGate>
+      </MaterialProvider>
     </ReduxProvider>
   );
 }
