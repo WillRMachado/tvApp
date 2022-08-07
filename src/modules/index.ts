@@ -1,5 +1,10 @@
 //material
-export {Text, TextInput, IconButton} from '@react-native-material/core';
+export {
+  Text,
+  TextInput,
+  IconButton,
+  Provider as MaterialProvider,
+} from '@react-native-material/core';
 export type {
   TextProps,
   TextInputProps,
@@ -8,7 +13,7 @@ export type {
 
 //redux
 export {PersistGate} from 'redux-persist/integration/react';
-export {useSelector, Provider} from 'react-redux';
+export {useSelector, Provider as ReduxProvider} from 'react-redux';
 export {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 export type {ActionReducerMapBuilder} from '@reduxjs/toolkit';
 
@@ -72,3 +77,4 @@ export {
   responsiveWidth,
   responsiveFontSize,
 } from 'react-native-responsive-dimensions';
+export {default as Modal} from 'react-native-modal';

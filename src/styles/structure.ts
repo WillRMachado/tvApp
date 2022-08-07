@@ -6,6 +6,7 @@ const statusBarHeight = StatusBar.currentHeight || 0;
 const standardPadding = 50;
 
 const fontSize = {
+  XXXS: responsiveFontSize(0.1),
   XXS: responsiveFontSize(0.5),
   XS: responsiveFontSize(1.5),
   S: responsiveFontSize(2),
