@@ -8,12 +8,15 @@ type Props = TextProps & {title?: boolean};
 const CustomText: React.FC<Props> = ({variant, title, children, ...params}) => {
   const defaultVariant = title ? 'h4' : 'body1';
   const customVariant = variant || defaultVariant;
+  const removeTagsRegex = /(<([^>]+)>)/gi;
   return (
     <Text
       variant={customVariant}
       style={[styles.text, title && styles.title]}
       {...params}>
-      {children}
+      {typeof children === 'string'
+        ? children.replace(removeTagsRegex, '')
+        : children}
     </Text>
   );
 };

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, Image} from 'react-native';
+import {StyleSheet, Image, View} from 'react-native';
 import {useTheme, CircleSnail, ImageProgress} from '~modules';
 import {measures, ThemesType} from '~styles';
 
@@ -22,7 +22,7 @@ export default function ImageLoader(props: {
 
   return (
     <ImageProgress
-      source={{uri: imageUri}}
+      source={{uri: imageUri || ''}}
       indicator={CircleSnail}
       indicatorProps={{
         color: colors.tertiary,
@@ -37,6 +37,9 @@ export default function ImageLoader(props: {
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    width: 90,
+  },
   defaultStyle: {
     width: measures.fontSize.XXL,
     height: measures.fontSize.XXL,

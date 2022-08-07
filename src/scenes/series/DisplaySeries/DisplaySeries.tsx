@@ -4,6 +4,7 @@ import {SeriesList, SeriesListType} from '~components';
 import CustomTextInput from '~src/components/atoms/CustomTextInput';
 import {measures} from '~styles';
 import {seriesTypes} from '~types';
+import {SceneWrapper} from '~template';
 
 type Props = SeriesListType & {
   onChangeTextSearch: (arg0: string) => void;
@@ -20,21 +21,23 @@ const DisplaySeries: React.FC<Props> = ({
 }) => {
   return (
     <>
-      <View style={styles.searchWrapper}>
-        <CustomTextInput
-          onChangeText={onChangeTextSearch}
-          trailingIconName="search-web"
-        />
-      </View>
+      <SceneWrapper>
+        <View style={styles.searchWrapper}>
+          <CustomTextInput
+            onChangeText={onChangeTextSearch}
+            trailingIconName="search-web"
+          />
+        </View>
 
-      {isSearching ? (
-        <SeriesList
-          seriesList={seriesSearchedList}
-          onEndReached={onEndReached}
-        />
-      ) : (
-        <SeriesList seriesList={seriesList} onEndReached={onEndReached} />
-      )}
+        {isSearching ? (
+          <SeriesList
+            seriesList={seriesSearchedList}
+            onEndReached={onEndReached}
+          />
+        ) : (
+          <SeriesList seriesList={seriesList} onEndReached={onEndReached} />
+        )}
+      </SceneWrapper>
     </>
   );
 };

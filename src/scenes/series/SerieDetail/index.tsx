@@ -6,6 +6,7 @@ import debounce from 'lodash/debounce';
 import {RoutesProps} from '~src/navigation/routeNames';
 import {seriesTypes} from '~types';
 import {getShowSeason} from '~src/service/tvMaze';
+import {asyncFetchSeriesSeason} from '~src/store/reducers/serieDetail';
 
 type Props = RoutesProps<seriesTypes.SerieType>;
 
@@ -13,19 +14,31 @@ const SerieDetailIndex: React.FC<Props> = (props) => {
   const {params} = props.route;
   const serieSelected = params;
 
-  const getA = async () => {
-    const jj = await getShowSeason(6);
-    console.log({jj});
-    return jj;
+  const dispatch = useAppDispatch();
+
+  const seriesSeasons = useAppSelector(
+    (state) => state.store.seriesDetail.seasons,
+  );
+
+  const seriesEpisodes = useAppSelector(
+    (state) => state.store.seriesDetail.episodes,
+  );
+
+  const fetchSeason = async () => {
+    dispatch(asyncFetchSeriesSeason(serieSelected.id));
   };
 
   useEffect(() => {
-    console.log('init');
-    getA();
-    console.log('end');
+    fetchSeason();
   }, []);
 
-  return <SerieDetail serieSelected={serieSelected} />;
+  return (
+    <SerieDetail
+      serieSelected={serieSelected}
+      seriesSeasons={seriesSeasons}
+      seriesEpisodes={seriesEpisodes}
+    />
+  );
 };
 
 export default SerieDetailIndex;

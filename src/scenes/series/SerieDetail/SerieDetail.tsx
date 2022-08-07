@@ -1,51 +1,34 @@
 import {StyleSheet, View, Text} from 'react-native';
 import React from 'react';
-import {ImageLoader, SeriesList, SeriesListType, SeasonSection} from '~components';
+import {
+  ImageLoader,
+  SeriesList,
+  SeriesListType,
+  SeasonSection,
+  CustomText,
+  SerieDisplayDetail,
+} from '~components';
 import CustomTextInput from '~src/components/atoms/CustomTextInput';
 import {measures} from '~styles';
 import {seriesTypes} from '~types';
+import {decode} from 'html-entities';
+import {SceneWrapperScrolled} from '~template';
 
 type Props = seriesTypes.SerieType;
 
-const SerieDetail: React.FC<Props> = (props) => {
-  // console.log({props: props.name});
+const SerieDetail: React.FC<Props> = ({
+  serieSelected,
+  seriesSeasons,
+  seriesEpisodes,
+}) => {
   return (
     <>
-      <View>
-        <ImageLoader imageUri="" />
-        <Text>titulo</Text>
-      </View>
-      <SeasonSection />
-      <SeasonSection />
-      <SeasonSection />
-      <SeasonSection />
-      <SeasonSection />
-      <SeasonSection />
-      <SeasonSection />
-      <SeasonSection />
-      <SeasonSection />
-      <View style={{flexDirection: 'row', justifyContent:'space-between'}}>
-        <Text>sessao</Text>
-        <Text>ico</Text>
-      </View>
-      <View>
-        <Text>epi</Text>
-      </View>
-      {/* <View style={styles.searchWrapper}>
-        <CustomTextInput
-          onChangeText={onChangeTextSearch}
-          trailingIconName="search-web"
-        />
-      </View> */}
-
-      {/* {isSearching ? (
-        <SeriesList
-          seriesList={seriesSearchedList}
-          onEndReached={onEndReached}
-        />
-      ) : (
-        <SeriesList seriesList={seriesList} onEndReached={onEndReached} />
-      )} */}
+      <SceneWrapperScrolled>
+        <SerieDisplayDetail serieSelected={serieSelected} />
+        {seriesSeasons.map((season) => (
+          <SeasonSection season={season} seriesEpisodes={seriesEpisodes} />
+        ))}
+      </SceneWrapperScrolled>
     </>
   );
 };

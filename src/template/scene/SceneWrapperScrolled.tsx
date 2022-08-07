@@ -5,19 +5,19 @@ import globalStyles from '~styles';
 
 type Props = {style?: Record<string, string | number>};
 
-const SceneWrapper: React.FC<PropsWithChildren<Props>> = ({
+const SceneWrapperScrolled: React.FC<PropsWithChildren<Props>> = ({
   children,
   style,
   ...params
 }) => {
   const customStyle = style || {};
   return (
-    <View
+    <ScrollView
       style={[globalStyles.structure.contentContainer, customStyle]}
       {...params}>
       {children}
-    </View>
+    </ScrollView>
   );
 };
 
-export default SceneWrapper;
+export default SceneWrapperScrolled;

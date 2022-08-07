@@ -10,8 +10,7 @@ import {seriesTypes} from '~types';
 
 type Props = seriesTypes.SerieType;
 
-const SeriesItem: React.FC<Props> = (props) => {
-  const {name, image} = props;
+const SeriesItem: React.FC<Props> = ({season, seriesEpisodes}) => {
   const {colors}: ThemesType = useTheme();
   const styles = dynamicStyles(colors);
 
@@ -21,18 +20,24 @@ const SeriesItem: React.FC<Props> = (props) => {
 
   const onPressSection = () => setIsOpen((state) => !state);
 
+  const episodesInSeason = seriesEpisodes.filter(
+    (episode) => episode.season === season,
+  );
+
+
   return (
     <>
       <TouchableOpacity onPress={onPressSection} style={styles.sectionWrapper}>
         <View style={styles.sectionInside}>
-          <CustomText>sessao</CustomText>
+          <CustomText>{`Season ${season}`}</CustomText>
           <CustomIcon
             name={isOpen ? 'chevron-down' : 'chevron-right'}
             size={measures.fontSize.L}
           />
         </View>
       </TouchableOpacity>
-      {isOpen && [0, 1, 2, 3].map(() => <EpisodeDisplay />)}
+      {isOpen &&
+        episodesInSeason.map((episode) => <EpisodeDisplay episode={episode} />)}
     </>
   );
 };

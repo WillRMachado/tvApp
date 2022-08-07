@@ -28,8 +28,8 @@ const searchShowsList = async (term: string) => {
   return await networkCaller(baseUrl, requestData);
 };
 
-const getShowSeason = async (id: number) => {
-  const url = `${baseUrl}shows/${id}/seasons`;
+const getShowSeasonEpisodes = async (id: number | string) => {
+  const url = `${baseUrl}shows/${id}/episodes`;
   const method = 'get';
 
   const requestData: AxiosRequestConfig = {
@@ -52,4 +52,9 @@ const getSeasonEpisodes = async (id: string) => {
   return await networkCaller(baseUrl, requestData);
 };
 
-export {getShowsList, searchShowsList, getShowSeason, getSeasonEpisodes};
+export {
+  getShowsList,
+  searchShowsList,
+  getShowSeasonEpisodes,
+  getSeasonEpisodes,
+};
