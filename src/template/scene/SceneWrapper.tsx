@@ -1,12 +1,13 @@
-import {ScrollView, View} from 'react-native';
+import {View} from 'react-native';
 import {PropsWithChildren} from 'react';
 import React from 'react';
 import globalStyles from '~styles';
-import {ActivityIndicator} from '@react-native-material/core';
-import {useTheme, CircleSnail, ImageProgress} from '~modules';
 import {Spinner} from '~components';
 
-type Props = {style?: Record<string, string | number>};
+export type Props = {
+  isLoading?: boolean;
+  style?: Record<string, string | number>;
+};
 
 const SceneWrapper: React.FC<PropsWithChildren<Props>> = ({
   children,

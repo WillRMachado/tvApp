@@ -1,22 +1,18 @@
 import React, {useState} from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 
 import {CustomText} from '~atoms';
-import {Modal} from '~modules';
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogHeader,
-} from '@react-native-material/core';
+
 import EpisodeDetailsModal from '../EpisodeDetailsModal';
 import {measures} from '~styles';
+import {seriesTypes} from '~types';
 
-const EpisodeDisplay: React.FC = ({episode}) => {
+type Props = {episode: seriesTypes.SerieEpisodeType};
+
+const EpisodeDisplay: React.FC<Props> = ({episode}) => {
   const [showEpisodeDetails, setShowEpisodeDetails] = useState(false);
 
-  const onPressEpisode = (params) => {
+  const onPressEpisode = () => {
     setShowEpisodeDetails(true);
   };
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
-import {CircleSnail, Text, TextProps, useTheme} from '~modules';
-import globalStyles, {measures, ThemesType} from '~styles';
+import {CircleSnail, useTheme} from '~modules';
+import {measures, ThemesType} from '~styles';
 
 const Spinner: React.FC = () => {
   const {colors}: ThemesType = useTheme();

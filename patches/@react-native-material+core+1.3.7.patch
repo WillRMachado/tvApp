@@ -1,12 +1,12 @@
 diff --git a/node_modules/@react-native-material/core/lib/typescript/Dialog.d.ts b/node_modules/@react-native-material/core/lib/typescript/Dialog.d.ts
-index 43dd902..a6818fd 100644
+index 43dd902..447b050 100644
 --- a/node_modules/@react-native-material/core/lib/typescript/Dialog.d.ts
 +++ b/node_modules/@react-native-material/core/lib/typescript/Dialog.d.ts
 @@ -2,6 +2,7 @@ import React from 'react';
  export interface DialogProps {
      visible?: boolean;
      onDismiss?: () => void;
-+    children:React.ReactNode
++    children?:React.ReactNode
  }
  declare const Dialog: React.FC<DialogProps>;
  export default Dialog;

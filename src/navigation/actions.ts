@@ -19,7 +19,7 @@ function resetRoutToTop(routeName: string) {
   });
 }
 
-function navigate(name: string, params?: Record<string, any>) {
+function navigate(name: string, params?: object) {
   return CommonActions.navigate({
     name,
     params,

@@ -1,17 +1,14 @@
-import React, {useState} from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import React from 'react';
 
 import {CustomText} from '~atoms';
-import {Modal} from '~modules';
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogHeader,
-} from '@react-native-material/core';
+import {Dialog, DialogContent, DialogHeader, DialogProps} from '~modules';
+import {seriesTypes} from '~types';
 
-const EpisodeDisplay: React.FC = ({episode, ...params}) => {
+type Props = DialogProps & {
+  episode: seriesTypes.SerieEpisodeType;
+};
+
+const EpisodeDisplay: React.FC<Props> = ({episode, ...params}) => {
   return (
     <>
       <Dialog {...params}>
@@ -25,9 +22,3 @@ const EpisodeDisplay: React.FC = ({episode, ...params}) => {
 };
 
 export default EpisodeDisplay;
-
-const styles = StyleSheet.create({
-  text: {
-    textAlign: 'left',
-  },
-});

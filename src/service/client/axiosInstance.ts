@@ -1,9 +1,8 @@
-import axios from 'axios';
-import axiosRetry from 'axios-retry';
+import {axios, axiosRetry, AxiosRequestHeaders} from '~modules';
 
 const axiosInstance = (
   url: string,
-  headers?: any,
+  headers?: AxiosRequestHeaders,
   timeout?: number,
   retries?: number,
 ) => {

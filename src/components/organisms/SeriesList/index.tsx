@@ -1,6 +1,5 @@
 import React from 'react';
 import {FlatList, View, StyleSheet} from 'react-native';
-import {CircleSnail} from 'react-native-progress';
 import {Spinner} from '~components';
 import {SeriesItem} from '~molecules';
 import {seriesTypes} from '~types';
@@ -8,6 +7,7 @@ import {seriesTypes} from '~types';
 export type Props = {
   seriesList: seriesTypes.SerieType[];
   onEndReached: () => void;
+  isLoading?: boolean;
 };
 
 const SeriesList: React.FC<Props> = ({isLoading, seriesList, onEndReached}) => {

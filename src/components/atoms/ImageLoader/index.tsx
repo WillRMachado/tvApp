@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, Image, View} from 'react-native';
+import {StyleSheet, Image} from 'react-native';
 import {useTheme, CircleSnail, ImageProgress} from '~modules';
 import {measures, ThemesType} from '~styles';
 

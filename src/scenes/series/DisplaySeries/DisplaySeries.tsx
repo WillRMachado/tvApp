@@ -10,6 +10,8 @@ type Props = SeriesListType & {
   onChangeTextSearch: (arg0: string) => void;
   isSearching: boolean;
   seriesSearchedList: seriesTypes.SerieType[];
+  isLoadingPage?: boolean;
+  isLoadingSearch?: boolean;
 };
 
 const DisplaySeries: React.FC<Props> = ({

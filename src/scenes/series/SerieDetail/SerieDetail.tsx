@@ -1,21 +1,14 @@
-import {StyleSheet, View, Text} from 'react-native';
 import React from 'react';
-import {
-  ImageLoader,
-  SeriesList,
-  SeriesListType,
-  SeasonSection,
-  CustomText,
-  SerieDisplayDetail,
-  Spinner,
-} from '~components';
-import CustomTextInput from '~src/components/atoms/CustomTextInput';
-import {measures} from '~styles';
+import {SeasonSection, SerieDisplayDetail, Spinner} from '~components';
 import {seriesTypes} from '~types';
-import {decode} from 'html-entities';
 import {SceneWrapperScrolled} from '~template';
 
-type Props = seriesTypes.SerieType;
+type Props = {
+  serieSelected: seriesTypes.SerieType;
+  seriesEpisodes: seriesTypes.SerieEpisodeType[];
+  seriesSeasons: number[];
+  isLoading?: boolean;
+};
 
 const SerieDetail: React.FC<Props> = ({
   serieSelected,
@@ -38,9 +31,3 @@ const SerieDetail: React.FC<Props> = ({
 };
 
 export default SerieDetail;
-
-const styles = StyleSheet.create({
-  searchWrapper: {
-    margin: measures.fontSize.XS,
-  },
-});

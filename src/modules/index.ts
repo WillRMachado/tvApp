@@ -4,11 +4,15 @@ export {
   TextInput,
   IconButton,
   Provider as MaterialProvider,
+  Dialog,
+  DialogContent,
+  DialogHeader,
 } from '@react-native-material/core';
 export type {
   TextProps,
   TextInputProps,
   IconProps,
+  DialogProps,
 } from '@react-native-material/core';
 
 //redux
@@ -27,6 +31,11 @@ export {
 export {createStackNavigator} from '@react-navigation/stack';
 export type {StackNavigationProp as StackNavigationPropType} from '@react-navigation/stack';
 export type {NativeStackScreenProps} from '@react-navigation/native-stack';
+
+//axios
+export {default as axios} from 'axios';
+export type {AxiosRequestHeaders} from 'axios';
+export {default as axiosRetry} from 'axios-retry';
 
 //icons
 import {default as MaterialCommunityIconsI} from 'react-native-vector-icons/MaterialCommunityIcons';
