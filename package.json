@@ -11,7 +11,8 @@
     "lint-and-fix": "eslint . --ext .ts,.tsx,.js,.jsx,.json --fix",
     "prettier-format": "prettier --config .prettierrc '**/*.{json,js,jsx,ts,tsx,css,scss,md}' --write",
     "verify-code": "yarn prettier-format && yarn lint-and-fix && yarn tsc --traceResolution",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "build": "cd android && ./gradlew assembleDebug && ./gradlew assembleRelease && mv app/build/outputs/apk/debug/app-debug.apk ../distribution/tvApp-debug.apk && mv app/build/outputs/apk/release/app-release.apk ../distribution/tvApp-release.apk"
   },
   "dependencies": {
     "@react-native-community/async-storage": "1.12.1",

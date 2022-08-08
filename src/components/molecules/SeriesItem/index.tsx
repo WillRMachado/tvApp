@@ -10,7 +10,7 @@ import {seriesTypes} from '~types';
 
 type Props = seriesTypes.SerieType;
 
-const imageSizeAdjustFactor = 0.95;
+const imageSizeAdjustFactor = 0.9;
 
 const SeriesItem: React.FC<Props> = (props) => {
   const {name, image} = props;
