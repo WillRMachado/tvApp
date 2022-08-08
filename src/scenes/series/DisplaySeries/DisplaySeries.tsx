@@ -12,6 +12,8 @@ type Props = SeriesListType & {
   seriesSearchedList: seriesTypes.SerieType[];
   isLoadingPage?: boolean;
   isLoadingSearch?: boolean;
+  hasError?: boolean;
+  hasErrorSearch?: boolean;
 };
 
 const DisplaySeries: React.FC<Props> = ({
@@ -22,6 +24,8 @@ const DisplaySeries: React.FC<Props> = ({
   seriesSearchedList,
   isLoadingPage,
   isLoadingSearch,
+  hasError,
+  hasErrorSearch,
 }) => {
   return (
     <SceneWrapper isLoading={isLoadingPage}>
@@ -37,9 +41,14 @@ const DisplaySeries: React.FC<Props> = ({
           seriesList={seriesSearchedList}
           onEndReached={onEndReached}
           isLoading={isLoadingSearch}
+          hasError={hasErrorSearch}
         />
       ) : (
-        <SeriesList seriesList={seriesList} onEndReached={onEndReached} />
+        <SeriesList
+          seriesList={seriesList}
+          onEndReached={onEndReached}
+          hasError={hasError}
+        />
       )}
     </SceneWrapper>
   );
