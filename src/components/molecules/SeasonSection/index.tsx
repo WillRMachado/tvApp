@@ -32,7 +32,9 @@ const SeasonSection: React.FC<Props> = ({season, seriesEpisodes}) => {
         </View>
       </TouchableOpacity>
       {isOpen &&
-        episodesInSeason.map((episode) => <EpisodeDisplay episode={episode} />)}
+        episodesInSeason.map((episode) => (
+          <EpisodeDisplay key={episode.id} episode={episode} />
+        ))}
     </>
   );
 };

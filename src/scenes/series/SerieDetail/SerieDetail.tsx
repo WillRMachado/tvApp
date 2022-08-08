@@ -23,7 +23,11 @@ const SerieDetail: React.FC<Props> = ({
         <Spinner />
       ) : (
         seriesSeasons.map((season) => (
-          <SeasonSection season={season} seriesEpisodes={seriesEpisodes} />
+          <SeasonSection
+            key={season}
+            season={season}
+            seriesEpisodes={seriesEpisodes}
+          />
         ))
       )}
     </SceneWrapperScrolled>

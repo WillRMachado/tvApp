@@ -18,13 +18,14 @@ const SerieDisplayDetail: React.FC<Props> = ({serieSelected}) => {
             <CustomText title>{name}</CustomText>
 
             <View style={styles.textBox}>
-              {schedule?.days?.map((day) => (
-                <CustomText>{`${day} ${schedule.time}`}</CustomText>
+              {schedule?.days?.map((day, index) => (
+                <CustomText
+                  key={day + index}>{`${day} ${schedule.time}`}</CustomText>
               ))}
             </View>
             <View style={styles.textBox}>
-              {genres?.map((genre) => (
-                <CustomText>{genre}</CustomText>
+              {genres?.map((genre, index) => (
+                <CustomText key={genre + index}>{genre}</CustomText>
               ))}
             </View>
           </View>
