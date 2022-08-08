@@ -10,6 +10,8 @@ import {seriesTypes} from '~types';
 
 type Props = seriesTypes.SerieType;
 
+const imageSizeAdjustFactor = 0.95;
+
 const SeriesItem: React.FC<Props> = (props) => {
   const {name, image} = props;
   const {colors}: ThemesType = useTheme();
@@ -22,7 +24,10 @@ const SeriesItem: React.FC<Props> = (props) => {
 
   return (
     <TouchableOpacity onPress={onPressDefault} style={styles.itemWrapper}>
-      <ImageLoader width={measures.responsiveWidth} imageUri={image.original} />
+      <ImageLoader
+        width={measures.paddingAdjustedScreenWidth * imageSizeAdjustFactor}
+        imageUri={image?.original}
+      />
       <View style={styles.textWrapper}>
         <CustomText style={styles.text}>{name.toUpperCase()}</CustomText>
       </View>

@@ -1,5 +1,7 @@
 import React from 'react';
 import {FlatList, View, StyleSheet} from 'react-native';
+import {CircleSnail} from 'react-native-progress';
+import {Spinner} from '~components';
 import {SeriesItem} from '~molecules';
 import {seriesTypes} from '~types';
 
@@ -8,16 +10,20 @@ export type Props = {
   onEndReached: () => void;
 };
 
-const SeriesList: React.FC<Props> = ({seriesList, onEndReached}) => {
+const SeriesList: React.FC<Props> = ({isLoading, seriesList, onEndReached}) => {
   return (
     <View style={styles.listWrapper}>
-      <FlatList
-        data={seriesList}
-        renderItem={({item}) => <SeriesItem {...item} />}
-        keyExtractor={(item) => String(item.id)}
-        onEndReachedThreshold={0.1}
-        onEndReached={onEndReached}
-      />
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <FlatList
+          data={seriesList}
+          renderItem={({item}) => <SeriesItem {...item} />}
+          keyExtractor={(item) => String(item.id)}
+          onEndReachedThreshold={0.1}
+          onEndReached={onEndReached}
+        />
+      )}
     </View>
   );
 };

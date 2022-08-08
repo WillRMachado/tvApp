@@ -57,6 +57,7 @@ const dynamicStyles = (colors: ThemeColorsTypes) => {
   return StyleSheet.create({
     wrapper: {
       flexDirection: 'column',
+      marginBottom: measures.fontSize.XS,
     },
     wrapperInfo: {
       flexDirection: 'row',
@@ -64,6 +65,7 @@ const dynamicStyles = (colors: ThemeColorsTypes) => {
     wrapperDescription: {
       flex: 1,
       flexDirection: 'column',
+      marginHorizontal: measures.fontSize.XS,
     },
     textBox: {
       marginTop: measures.fontSize.XS,

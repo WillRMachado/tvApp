@@ -7,6 +7,7 @@ import {
   SeasonSection,
   CustomText,
   SerieDisplayDetail,
+  Spinner,
 } from '~components';
 import CustomTextInput from '~src/components/atoms/CustomTextInput';
 import {measures} from '~styles';
@@ -20,16 +21,19 @@ const SerieDetail: React.FC<Props> = ({
   serieSelected,
   seriesSeasons,
   seriesEpisodes,
+  isLoading,
 }) => {
   return (
-    <>
-      <SceneWrapperScrolled>
-        <SerieDisplayDetail serieSelected={serieSelected} />
-        {seriesSeasons.map((season) => (
+    <SceneWrapperScrolled>
+      <SerieDisplayDetail serieSelected={serieSelected} />
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        seriesSeasons.map((season) => (
           <SeasonSection season={season} seriesEpisodes={seriesEpisodes} />
-        ))}
-      </SceneWrapperScrolled>
-    </>
+        ))
+      )}
+    </SceneWrapperScrolled>
   );
 };
 

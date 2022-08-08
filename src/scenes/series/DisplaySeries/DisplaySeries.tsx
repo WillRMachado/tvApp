@@ -18,27 +18,28 @@ const DisplaySeries: React.FC<Props> = ({
   onChangeTextSearch,
   isSearching,
   seriesSearchedList,
+  isLoadingPage,
+  isLoadingSearch,
 }) => {
   return (
-    <>
-      <SceneWrapper>
-        <View style={styles.searchWrapper}>
-          <CustomTextInput
-            onChangeText={onChangeTextSearch}
-            trailingIconName="search-web"
-          />
-        </View>
+    <SceneWrapper isLoading={isLoadingPage}>
+      <View style={styles.searchWrapper}>
+        <CustomTextInput
+          onChangeText={onChangeTextSearch}
+          trailingIconName="search-web"
+        />
+      </View>
 
-        {isSearching ? (
-          <SeriesList
-            seriesList={seriesSearchedList}
-            onEndReached={onEndReached}
-          />
-        ) : (
-          <SeriesList seriesList={seriesList} onEndReached={onEndReached} />
-        )}
-      </SceneWrapper>
-    </>
+      {isSearching ? (
+        <SeriesList
+          seriesList={seriesSearchedList}
+          onEndReached={onEndReached}
+          isLoading={isLoadingSearch}
+        />
+      ) : (
+        <SeriesList seriesList={seriesList} onEndReached={onEndReached} />
+      )}
+    </SceneWrapper>
   );
 };
 

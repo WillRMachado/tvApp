@@ -10,7 +10,7 @@ import {seriesTypes} from '~types';
 
 type Props = seriesTypes.SerieType;
 
-const SeriesItem: React.FC<Props> = ({season, seriesEpisodes}) => {
+const SeasonSection: React.FC<Props> = ({season, seriesEpisodes}) => {
   const {colors}: ThemesType = useTheme();
   const styles = dynamicStyles(colors);
 
@@ -23,7 +23,6 @@ const SeriesItem: React.FC<Props> = ({season, seriesEpisodes}) => {
   const episodesInSeason = seriesEpisodes.filter(
     (episode) => episode.season === season,
   );
-
 
   return (
     <>
@@ -42,14 +41,14 @@ const SeriesItem: React.FC<Props> = ({season, seriesEpisodes}) => {
   );
 };
 
-export default SeriesItem;
+export default SeasonSection;
 
 const dynamicStyles = (colors: ThemeColorsTypes) => {
   return StyleSheet.create({
     sectionWrapper: {
       flexDirection: 'column',
       justifyContent: 'space-between',
-      padding: measures.fontSize.XXS,
+      paddingTop: measures.fontSize.XXS,
     },
     sectionInside: {
       flexDirection: 'row',

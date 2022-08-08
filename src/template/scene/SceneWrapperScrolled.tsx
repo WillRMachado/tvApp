@@ -1,22 +1,25 @@
-import {ScrollView, View} from 'react-native';
+import {ScrollView} from 'react-native';
 import {PropsWithChildren} from 'react';
 import React from 'react';
-import globalStyles from '~styles';
-
-type Props = {style?: Record<string, string | number>};
+import SceneWrapper from './SceneWrapper';
 
 const SceneWrapperScrolled: React.FC<PropsWithChildren<Props>> = ({
   children,
-  style,
+  isLoading,
   ...params
 }) => {
-  const customStyle = style || {};
   return (
-    <ScrollView
-      style={[globalStyles.structure.contentContainer, customStyle]}
-      {...params}>
-      {children}
-    </ScrollView>
+    <>
+      {isLoading ? (
+        <SceneWrapper isLoading={isLoading} {...params}>
+          {children}
+        </SceneWrapper>
+      ) : (
+        <ScrollView>
+          <SceneWrapper {...params}>{children}</SceneWrapper>
+        </ScrollView>
+      )}
+    </>
   );
 };
 

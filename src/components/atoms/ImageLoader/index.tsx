@@ -25,7 +25,7 @@ export default function ImageLoader(props: {
       source={{uri: imageUri || ''}}
       indicator={CircleSnail}
       indicatorProps={{
-        color: colors.tertiary,
+        color: colors.primary,
       }}
       style={[
         styles.defaultStyle,

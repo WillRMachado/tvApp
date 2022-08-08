@@ -24,6 +24,10 @@ const SerieDetailIndex: React.FC<Props> = (props) => {
     (state) => state.store.seriesDetail.episodes,
   );
 
+  const isLoading = useAppSelector(
+    (state) => state.store.seriesDetail.isLoading,
+  );
+
   const fetchSeason = async () => {
     dispatch(asyncFetchSeriesSeason(serieSelected.id));
   };
@@ -37,6 +41,7 @@ const SerieDetailIndex: React.FC<Props> = (props) => {
       serieSelected={serieSelected}
       seriesSeasons={seriesSeasons}
       seriesEpisodes={seriesEpisodes}
+      isLoading={isLoading}
     />
   );
 };

@@ -13,6 +13,10 @@ const DisplaySeriesIndex: React.FC = () => {
   const seriesSearchedList = useAppSelector(
     (state) => state.store.series.seriesSearchedList,
   );
+  const isLoadingPage = useAppSelector((state) => state.store.series.isLoading);
+  const isLoadingSearch = useAppSelector(
+    (state) => state.store.series.isLoadingSearch,
+  );
 
   useEffect(() => {
     fetchSeries();
@@ -44,6 +48,8 @@ const DisplaySeriesIndex: React.FC = () => {
       onChangeTextSearch={debouncedSearch}
       seriesSearchedList={seriesSearchedList}
       isSearching={isSearching}
+      isLoadingPage={isLoadingPage}
+      isLoadingSearch={isLoadingSearch}
     />
   );
 };
