@@ -26,7 +26,7 @@ const SerieDetailIndex: React.FC<Props> = (props) => {
   );
 
   const fetchSeason = async () => {
-    dispatch(asyncFetchSeriesSeason(serieSelected.id));
+    serieSelected.id && dispatch(asyncFetchSeriesSeason(serieSelected.id));
   };
 
   useEffect(() => {

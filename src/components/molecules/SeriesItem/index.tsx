@@ -29,7 +29,7 @@ const SeriesItem: React.FC<Props> = (props) => {
         imageUri={image?.original}
       />
       <View style={styles.textWrapper}>
-        <CustomText style={styles.text}>{name.toUpperCase()}</CustomText>
+        <CustomText style={styles.text}>{name?.toUpperCase()}</CustomText>
       </View>
     </TouchableOpacity>
   );

@@ -1,5 +1,5 @@
 import {createSlice, createAsyncThunk, ActionReducerMapBuilder} from '~modules';
-import {getShowSeasonEpisodes} from '~src/service/tvMaze';
+import {getSerieSeasonEpisodes} from '~src/service/tvMaze';
 import {RootState} from '~store';
 import {seriesTypes} from '~types';
 
@@ -40,8 +40,14 @@ const asyncFetchSeriesSeasonBuilder = (
   builder.addCase(asyncFetchSeriesSeason.fulfilled, (state, action) => {
     const receivedData = action.payload;
     state.episodes = receivedData;
-    const seasons = receivedData.map((episode) => episode.season);
+
+    const seasons: number[] = [];
+    receivedData.forEach(
+      (episode) => episode.season && seasons.push(episode.season),
+    );
+
     const seasonsSet = new Set(seasons);
+
     state.seasons = [...seasonsSet];
     state.isLoading = false;
   });
@@ -52,7 +58,7 @@ const asyncFetchSeriesSeason = createAsyncThunk<
   number | string,
   {state: RootState}
 >('seriesSeason/fetch', async (serieId) => {
-  const response = await getShowSeasonEpisodes(serieId);
+  const response = await getSerieSeasonEpisodes(serieId);
   return response?.data || [];
 });
 

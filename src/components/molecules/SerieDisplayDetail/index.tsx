@@ -13,17 +13,17 @@ const SerieDisplayDetail: React.FC<Props> = ({serieSelected}) => {
     <>
       <View style={styles.wrapper}>
         <View style={styles.wrapperInfo}>
-          <ImageLoader width={measures.fontSize.XXL} imageUri={image.medium} />
+          <ImageLoader width={measures.fontSize.XXL} imageUri={image?.medium} />
           <View style={styles.wrapperDescription}>
             <CustomText title>{name}</CustomText>
 
             <View style={styles.textBox}>
-              {schedule.days.map((day) => (
+              {schedule?.days?.map((day) => (
                 <CustomText>{`${day} ${schedule.time}`}</CustomText>
               ))}
             </View>
             <View style={styles.textBox}>
-              {genres.map((genre) => (
+              {genres?.map((genre) => (
                 <CustomText>{genre}</CustomText>
               ))}
             </View>
