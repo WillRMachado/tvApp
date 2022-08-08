@@ -4,7 +4,7 @@ import {useTheme, CircleSnail, ImageProgress} from '~modules';
 import {measures, ThemesType} from '~styles';
 
 export default function ImageLoader(props: {
-  imageUri: string;
+  imageUri?: string;
   style?: object;
   width?: number;
 }) {
@@ -13,19 +13,20 @@ export default function ImageLoader(props: {
   const {colors}: ThemesType = useTheme();
 
   useEffect(() => {
-    Image.getSize(imageUri, (imgWidth, imgHeight) =>
-      setProportion(imgHeight / imgWidth),
-    );
+    imageUri &&
+      Image.getSize(imageUri, (imgWidth, imgHeight) =>
+        setProportion(imgHeight / imgWidth),
+      );
   }, []);
 
   const proportionalHeight = (width?: number) => (width || 1) * proportion;
 
   return (
     <ImageProgress
-      source={{uri: imageUri}}
+      source={{uri: imageUri || ''}}
       indicator={CircleSnail}
       indicatorProps={{
-        color: colors.tertiary,
+        color: colors.primary,
       }}
       style={[
         styles.defaultStyle,
@@ -37,6 +38,9 @@ export default function ImageLoader(props: {
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    width: 90,
+  },
   defaultStyle: {
     width: measures.fontSize.XXL,
     height: measures.fontSize.XXL,

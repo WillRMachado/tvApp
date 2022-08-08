@@ -1,39 +1,37 @@
-import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import {SeriesList, SeriesListType} from '~components';
-import CustomTextInput from '~src/components/atoms/CustomTextInput';
-import {measures} from '~styles';
+import {SeasonSection, SerieDisplayDetail, Spinner} from '~components';
 import {seriesTypes} from '~types';
+import {SceneWrapperScrolled} from '~template';
 
-type Props = seriesTypes.SerieType;
+type Props = {
+  serieSelected: seriesTypes.SerieType;
+  seriesEpisodes: seriesTypes.SerieEpisodeType[];
+  seriesSeasons: number[];
+  isLoading?: boolean;
+};
 
-const SerieDetail: React.FC<Props> = (props) => {
-  // console.log({props: props.name});
+const SerieDetail: React.FC<Props> = ({
+  serieSelected,
+  seriesSeasons,
+  seriesEpisodes,
+  isLoading,
+}) => {
   return (
-    <>
-      {/* <View style={styles.searchWrapper}>
-        <CustomTextInput
-          onChangeText={onChangeTextSearch}
-          trailingIconName="search-web"
-        />
-      </View> */}
-
-      {/* {isSearching ? (
-        <SeriesList
-          seriesList={seriesSearchedList}
-          onEndReached={onEndReached}
-        />
+    <SceneWrapperScrolled>
+      <SerieDisplayDetail serieSelected={serieSelected} />
+      {isLoading ? (
+        <Spinner />
       ) : (
-        <SeriesList seriesList={seriesList} onEndReached={onEndReached} />
-      )} */}
-    </>
+        seriesSeasons.map((season) => (
+          <SeasonSection
+            key={season}
+            season={season}
+            seriesEpisodes={seriesEpisodes}
+          />
+        ))
+      )}
+    </SceneWrapperScrolled>
   );
 };
 
 export default SerieDetail;
-
-const styles = StyleSheet.create({
-  searchWrapper: {
-    margin: measures.fontSize.XS,
-  },
-});

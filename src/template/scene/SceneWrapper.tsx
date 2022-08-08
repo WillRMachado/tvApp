@@ -2,12 +2,17 @@ import {View} from 'react-native';
 import {PropsWithChildren} from 'react';
 import React from 'react';
 import globalStyles from '~styles';
+import {Spinner} from '~components';
 
-type Props = {style?: Record<string, string | number>};
+export type Props = {
+  isLoading?: boolean;
+  style?: Record<string, string | number>;
+};
 
 const SceneWrapper: React.FC<PropsWithChildren<Props>> = ({
   children,
   style,
+  isLoading,
   ...params
 }) => {
   const customStyle = style || {};
@@ -15,7 +20,7 @@ const SceneWrapper: React.FC<PropsWithChildren<Props>> = ({
     <View
       style={[globalStyles.structure.contentContainer, customStyle]}
       {...params}>
-      {children}
+      {isLoading ? <Spinner /> : children}
     </View>
   );
 };

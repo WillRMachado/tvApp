@@ -227,6 +227,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file('tvApp.keystore')
+            storePassword 'tvApp00'
+            keyAlias 'tvApp'
+            keyPassword 'tvApp00'
+        }
     }
     buildTypes {
         debug {

@@ -1,14 +1,23 @@
 //material
-export {Text, TextInput, IconButton} from '@react-native-material/core';
+export {
+  Text,
+  TextInput,
+  IconButton,
+  Provider as MaterialProvider,
+  Dialog,
+  DialogContent,
+  DialogHeader,
+} from '@react-native-material/core';
 export type {
   TextProps,
   TextInputProps,
   IconProps,
+  DialogProps,
 } from '@react-native-material/core';
 
 //redux
 export {PersistGate} from 'redux-persist/integration/react';
-export {useSelector, Provider} from 'react-redux';
+export {useSelector, Provider as ReduxProvider} from 'react-redux';
 export {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 export type {ActionReducerMapBuilder} from '@reduxjs/toolkit';
 
@@ -22,6 +31,11 @@ export {
 export {createStackNavigator} from '@react-navigation/stack';
 export type {StackNavigationProp as StackNavigationPropType} from '@react-navigation/stack';
 export type {NativeStackScreenProps} from '@react-navigation/native-stack';
+
+//axios
+export {default as axios} from 'axios';
+export type {AxiosRequestHeaders} from 'axios';
+export {default as axiosRetry} from 'axios-retry';
 
 //icons
 import {default as MaterialCommunityIconsI} from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -72,3 +86,4 @@ export {
   responsiveWidth,
   responsiveFontSize,
 } from 'react-native-responsive-dimensions';
+export {default as Modal} from 'react-native-modal';

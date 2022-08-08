@@ -4,7 +4,7 @@ import networkCaller from './client/networkCaller';
 
 const baseUrl = 'https://api.tvmaze.com/';
 
-const getShowsList = async (page: number) => {
+const getSeriesList = async (page: number) => {
   const url = `${baseUrl}shows?page=${page}`;
   const method = 'get';
 
@@ -16,7 +16,7 @@ const getShowsList = async (page: number) => {
   return await networkCaller(baseUrl, requestData);
 };
 
-const searchShowsList = async (term: string) => {
+const searchSeriesList = async (term: string) => {
   const url = `${baseUrl}search/shows?q=${term}`;
   const method = 'get';
 
@@ -28,8 +28,8 @@ const searchShowsList = async (term: string) => {
   return await networkCaller(baseUrl, requestData);
 };
 
-const getShowSeason = async (id: number) => {
-  const url = `${baseUrl}shows/${id}/seasons`;
+const getSerieSeasonEpisodes = async (id: number | string) => {
+  const url = `${baseUrl}shows/${id}/episodes`;
   const method = 'get';
 
   const requestData: AxiosRequestConfig = {
@@ -40,16 +40,4 @@ const getShowSeason = async (id: number) => {
   return await networkCaller(baseUrl, requestData);
 };
 
-const getSeasonEpisodes = async (id: string) => {
-  const url = `${baseUrl}seasons/${id}/episodes`;
-  const method = 'get';
-
-  const requestData: AxiosRequestConfig = {
-    url,
-    method,
-  };
-
-  return await networkCaller(baseUrl, requestData);
-};
-
-export {getShowsList, searchShowsList, getShowSeason, getSeasonEpisodes};
+export {getSeriesList, searchSeriesList, getSerieSeasonEpisodes};

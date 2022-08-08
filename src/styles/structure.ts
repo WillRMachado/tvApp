@@ -3,17 +3,29 @@ import {responsiveHeight, responsiveWidth, responsiveFontSize} from '~modules';
 import mainTheme from './themes/main';
 
 const statusBarHeight = StatusBar.currentHeight || 0;
-const standardPadding = 50;
+const standardPadding = 10;
 
 const fontSize = {
+  XXXS: responsiveFontSize(0.1),
   XXS: responsiveFontSize(0.5),
   XS: responsiveFontSize(1.5),
   S: responsiveFontSize(2),
   M: responsiveFontSize(2.5),
   L: responsiveFontSize(3),
   XL: responsiveFontSize(6),
-  XXL: responsiveFontSize(10),
+  XXL: responsiveFontSize(20),
   iconXXL: responsiveFontSize(25),
+};
+const layout = {
+  XXXS: responsiveFontSize(30),
+  XXS: responsiveFontSize(40),
+  XS: responsiveFontSize(50),
+  S: responsiveFontSize(60),
+  M: responsiveFontSize(70),
+  L: responsiveFontSize(80),
+  XL: responsiveFontSize(90),
+  XXL: responsiveFontSize(100),
+  iconXXL: responsiveFontSize(110),
 };
 
 const border = {
@@ -29,8 +41,9 @@ const measures = {
   paddingAdjustedScreenHeight:
     responsiveHeight(100) - standardPadding * 2 - statusBarHeight,
   paddingAdjustedScreenWidth: responsiveWidth(100) - standardPadding * 2,
-  fontSize: fontSize,
-  border: border,
+  fontSize,
+  border,
+  layout,
 };
 
 const structure = StyleSheet.create({
@@ -40,8 +53,6 @@ const structure = StyleSheet.create({
   contentContainer: {
     flex: 1,
     padding: standardPadding,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: mainTheme.colors.background,
   },
 });

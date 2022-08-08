@@ -1,6 +1,11 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import {Provider, NavigationContainer, PersistGate} from '~modules';
+import {
+  ReduxProvider,
+  NavigationContainer,
+  PersistGate,
+  MaterialProvider,
+} from '~modules';
 import MainNavigator from '~navigation/routes';
 import reducersStore, {persistor} from './src/store';
 import {mainTheme} from '~styles';
@@ -15,10 +20,12 @@ function NavigationWithRedux() {
 
 export default function App() {
   return (
-    <Provider store={reducersStore}>
-      <PersistGate persistor={persistor}>
-        <NavigationWithRedux />
-      </PersistGate>
-    </Provider>
+    <ReduxProvider store={reducersStore}>
+      <MaterialProvider>
+        <PersistGate persistor={persistor}>
+          <NavigationWithRedux />
+        </PersistGate>
+      </MaterialProvider>
+    </ReduxProvider>
   );
 }

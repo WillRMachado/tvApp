@@ -1,5 +1,5 @@
 import {createSlice, createAsyncThunk, ActionReducerMapBuilder} from '~modules';
-import {getShowsList, searchShowsList} from '~src/service/tvMaze';
+import {getSeriesList, searchSeriesList} from '~src/service/tvMaze';
 import {RootState} from '~store';
 import {addPageFromUndefined, parseNetworkError} from '~utils';
 import {seriesTypes} from '~types';
@@ -69,7 +69,7 @@ const asyncFetchSeries = createAsyncThunk<
     const pageToFetch = addPageFromUndefined(lastPageFetch);
 
     try {
-      const response = await getShowsList(pageToFetch);
+      const response = await getSeriesList(pageToFetch);
       return {
         list: response?.data || [],
         page: pageToFetch,
@@ -112,7 +112,7 @@ const asyncSearchSeries = createAsyncThunk<
 >(
   'seriesSearch/fetch',
   async (term: string) => {
-    const response = await searchShowsList(term);
+    const response = await searchSeriesList(term);
     return searchToList(response?.data || []);
   },
   {
